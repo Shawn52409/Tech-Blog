@@ -34,6 +34,11 @@ Comment.init(
         validate: {
             len: [2,500]
         }
+    },
+    comment_timestamp: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: DataTypes.NOW,
     }
   },
   {
