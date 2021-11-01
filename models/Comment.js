@@ -32,7 +32,7 @@ Comment.init(
         type: DataTypes.TEXT,
         allowNull: false,
         validate: {
-            len: [2]
+            len: [2,500]
         }
     }
   },
