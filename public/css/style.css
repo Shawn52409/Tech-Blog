@@ -1,0 +1,19 @@
+nav {
+  font-size: 1.5em;
+}
+.large{
+  font-size: 2em;
+}
+
+input[type="password"] {
+  width: 210px;
+}
+
+#name-signup{
+  width: 197px;
+}
+
+#email-login{
+  width: 238px;
+}
+
