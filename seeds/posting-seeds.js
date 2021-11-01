@@ -1,4 +1,4 @@
-const Posting = require('../models');
+const { Posting } = require('../models');
 
 const postingData = [
     {
