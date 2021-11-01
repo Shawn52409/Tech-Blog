@@ -13,7 +13,14 @@ input[type="password"] {
   width: 197px;
 }
 
-#email-login{
-  width: 238px;
+#name-login{
+  width: 198px;
 }
 
+.card-header{
+  background-color: rgb(178, 178, 180);
+}
+
+.post{
+  margin: 2em;
+}

@@ -2,16 +2,6 @@ const router = require('express').Router();
 const { Comment, User, Posting } = require('../models');
 const withAuth = require('../utils/auth');
 
-// router.get('/', async (req, res) => {
-//   try{
-//     res.render('test', {
-//       logged_in: false
-//     }); 
-
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 router.get('/', async (req, res) => {
   try {
     // Get all postings and JOIN with user data
@@ -89,14 +79,40 @@ router.get('/posting/:id', async (req, res) => {
 });
 
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/');
-    return;
-  }
+      return;
+    }  
+    res.render('login');
+  });
 
-  res.render('login');
-});
+
+//   try {
+//     const userFromDB = await User.findOne({
+//       where: {
+//         username: req.body.name,
+//       }
+//     });
+
+//     if (!userFromDB) {
+//       res
+//         .status(400)
+//         .json({message: "Sorry, please try again!"});
+//     }
+//     req.session.save(() => {
+//       req.session.logged_in = true;
+
+//       res
+//         .status(200)
+//         .json({ user: userFromDB, message: "You are now logged in."});
+//     })
+//   } catch (err) {
+//     res.status(500).json(err);
+//   };
+
+
+// });
 
 module.exports = router;
