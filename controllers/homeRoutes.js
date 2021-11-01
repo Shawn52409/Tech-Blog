@@ -2,17 +2,17 @@ const router = require('express').Router();
 const { Comment, User, Posting } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
-  try{
-    res.render('test', {
-      logged_in: false
-    }); 
+// router.get('/', async (req, res) => {
+//   try{
+//     res.render('test', {
+//       logged_in: false
+//     }); 
 
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-router.get('/a', async (req, res) => {
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+router.get('/', async (req, res) => {
   try {
     // Get all postings and JOIN with user data
     const postingData = await Posting.findAll({
