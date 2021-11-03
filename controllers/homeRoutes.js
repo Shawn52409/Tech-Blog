@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
         'id',
         'post_title',
         'post_content',
+        'post_timestamp',
       ],      
       include: [
         {
@@ -18,7 +19,7 @@ router.get('/', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text', 'comment_timestamp'],
           include: {
             model: User,
             attributes: ['username']
@@ -30,7 +31,7 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const postings = postingData.map((posting) => posting.get({ plain: true }));
-
+    console.log(postings);
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       postings, 
@@ -48,7 +49,7 @@ router.get('/posting/:id', async (req, res) => {
         'id',
         'post_title',
         'post_content',
-        'created_at'
+        'post_timestamp',
       ],      
       include: [
         {
@@ -57,7 +58,7 @@ router.get('/posting/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text', 'created_at'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text', 'comment_timestamp'],
           include: {
             model: User,
             attributes: ['username']
@@ -87,32 +88,5 @@ router.get('/login', async (req, res) => {
     }  
     res.render('login');
   });
-
-
-//   try {
-//     const userFromDB = await User.findOne({
-//       where: {
-//         username: req.body.name,
-//       }
-//     });
-
-//     if (!userFromDB) {
-//       res
-//         .status(400)
-//         .json({message: "Sorry, please try again!"});
-//     }
-//     req.session.save(() => {
-//       req.session.logged_in = true;
-
-//       res
-//         .status(200)
-//         .json({ user: userFromDB, message: "You are now logged in."});
-//     })
-//   } catch (err) {
-//     res.status(500).json(err);
-//   };
-
-
-// });
 
 module.exports = router;
