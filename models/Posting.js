@@ -20,6 +20,11 @@ Posting.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    post_timestamp: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
