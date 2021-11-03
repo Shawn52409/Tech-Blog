@@ -1,24 +1,53 @@
+// Dependencies
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Posting, Comment } = require('../../models');
+const session = require('express-session');
+const withAuth = require('../../utils/auth');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+
+// Add a new user
 router.post('/', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
-
+  User.create({
+    username: req.body.username,
+    password: req.body.password
+  }).then (userData => {
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      req.session.username = userData.username;
+      req.session.logged_in = ture;
 
-      res.status(200).json(userData);
-    });
-  } catch (err) {
+      res.json(userData);
+    })
+  }).catch (err => {
+    console.log(err);
     res.status(400).json(err);
-  }
+  });
 });
 
+// add new user with async
+// router.post('/', async (req, res) => {
+//   try {
+//     const userData = await User.create(req.body);
+
+//     req.session.save(() => {
+//       req.session.user_id = userData.id;
+//       req.session.username = userData.username;
+//       req.session.logged_in = true;
+
+//       res.status(200).json(userData);
+//     });
+//   } catch (err) {
+//     res.status(400).json(err);
+//   }
+// });
+
+
+// Login an existing user
 router.post('/login', async (req, res) => {
+  console.log("I'm here");
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { username: req.body.username } });
 
     if (!userData) {
       res
@@ -48,7 +77,8 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
+// Logout user
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
