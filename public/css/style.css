@@ -23,4 +23,5 @@ input[type="password"] {
 
 .post{
   margin: 2em;
+  border-style: double;
 }
