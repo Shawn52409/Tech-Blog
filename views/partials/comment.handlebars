@@ -1,0 +1,12 @@
+<div class='all-comments'>
+    {{#each this}}
+    <div class="single-comment">
+        <div>
+            {{user.username}} on {{format_date comment_timestamp}}
+        </div>
+        <div>
+            {{comment_text}}
+        </div>
+    </div>
+    {{/each}}
+</div>
