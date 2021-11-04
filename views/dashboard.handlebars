@@ -17,4 +17,19 @@
     </div>
 </div>
 
+{{#if postings.length}}
+
+<div>
+    <h2>Your Posts</h2>
+    <div>
+        {{#each postings as |posting|}}
+        <div>
+            {{> post posting}}
+            <a href="/dashboard/edit/{{post.id}}" class="edit">Edit post</a>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{/if}}
+
 <script src="./js/create-post.js"></script>
