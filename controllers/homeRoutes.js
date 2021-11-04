@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Comment, User, Posting } = require('../models');
 const withAuth = require('../utils/auth');
 
+// Render home page
 router.get('/', async (req, res) => {
   try {
     // Get all postings and JOIN with user data
@@ -42,7 +43,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/posting/:id', async (req, res) => {
+// Render single post
+router.get('/post/:id', async (req, res) => {
   try {
     const postingData = await Posting.findByPk(req.params.id, {
       attributes: [
@@ -69,8 +71,8 @@ router.get('/posting/:id', async (req, res) => {
     });
 
     const posting = postingData.get({ plain: true });
-
-    res.render('single_posting', {
+    console.log(posting);
+    res.render('single-posting', {
       posting,
       logged_in: req.session.logged_in
     });
@@ -79,7 +81,7 @@ router.get('/posting/:id', async (req, res) => {
   }
 });
 
-
+// Render the login and sign up page
 router.get('/login', async (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
