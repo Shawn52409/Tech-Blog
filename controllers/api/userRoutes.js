@@ -6,8 +6,9 @@ const withAuth = require('../../utils/auth');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
-// Add a new user
-router.post('/', async (req, res) => {
+// Add a new user (/api/users)
+router.post('/', (req, res) => {
+  console.log('Im here')
   User.create({
     username: req.body.username,
     password: req.body.password
@@ -18,6 +19,7 @@ router.post('/', async (req, res) => {
       req.session.logged_in = ture;
 
       res.json(userData);
+      console.log(userData);
     })
   }).catch (err => {
     console.log(err);
@@ -25,7 +27,7 @@ router.post('/', async (req, res) => {
   });
 });
 
-// add new user with async
+// add new user with async (/api/users)
 // router.post('/', async (req, res) => {
 //   try {
 //     const userData = await User.create(req.body);
@@ -45,10 +47,9 @@ router.post('/', async (req, res) => {
 
 // Login an existing user
 router.post('/login', async (req, res) => {
-  console.log("I'm here");
   try {
     const userData = await User.findOne({ where: { username: req.body.username } });
-
+    console.log(userData);
     if (!userData) {
       res
         .status(400)
