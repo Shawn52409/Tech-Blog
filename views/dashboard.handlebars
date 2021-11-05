@@ -20,12 +20,12 @@
 {{#if postings.length}}
 
 <div>
-    <h2>Your Posts</h2>
+    <h2 class="m-4">Your Posts</h2>
     <div>
         {{#each postings as |posting|}}
         <div>
             {{> post posting}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit">Edit post</a>
+            <a class="m-4" href="/dashboard/edit/{{post.id}}" class="edit">Edit post</a>
         </div>
         {{/each}}
     </div>
