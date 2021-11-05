@@ -25,3 +25,8 @@ input[type="password"] {
   margin: 2em;
   border-style: double;
 }
+
+#logout{
+  border-radius: 10%;
+  background-color: red;
+}
