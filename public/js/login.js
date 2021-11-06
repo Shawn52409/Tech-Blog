@@ -38,7 +38,6 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-    alert('Im here')
     if (response.ok) {
       alert('You are now signed up and logged in.');
       document.location.replace('/dashboard');
