@@ -1,22 +1,23 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { Posting } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// /api/postings
+// Create post (/api/posts)
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
+    const newPosting = await Posting.create({
+      post_title: req.body.postTitle,
+      post_content: req.body.postContent,
+      user_id: req.session.user_id
     });
 
-    res.status(200).json(newProject);
+    res.status(200).json(newPosting);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-// /api/postings
+// Delete a post /api/posts
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const projectData = await Project.destroy({
