@@ -1,0 +1,16 @@
+<div class="m-5">
+    <h3>Edit Post</h3>
+    <form class="m-3">
+        <div>
+            <input type="text" value="{{posting.post_title}}"/>
+        </div>
+        <div>
+            <textarea class="mt-2">{{posting.post_content}}</textarea>
+        </div>
+        <div>
+            Posted on {{format_date posting.post_timestamp}}
+        </div>
+        <button class="save-post bg-success">Save Post</button>
+        <button class="delete-post bg-danger">Delete Post</button>
+    </form>
+</div>
