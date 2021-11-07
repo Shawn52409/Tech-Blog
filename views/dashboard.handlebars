@@ -23,9 +23,9 @@
     <h2 class="m-4">Your Posts</h2>
     <div>
         {{#each postings as |posting|}}
-        <div>
+        <div class="m-4 edit-post">
             {{> post posting}}
-            <a class="m-4" href="/dashboard/edit/{{post.id}}" class="edit">Edit post</a>
+            <a class="m-4" href="/dashboard/edit/{{posting.id}}" class="edit">Edit post #{{posting.id}}</a>
         </div>
         {{/each}}
     </div>
