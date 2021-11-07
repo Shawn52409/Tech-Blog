@@ -30,3 +30,7 @@ input[type="password"] {
   border-radius: 10%;
   background-color: red;
 }
+
+.edit-post{
+  background-color: rgb(241, 243, 243);
+}
