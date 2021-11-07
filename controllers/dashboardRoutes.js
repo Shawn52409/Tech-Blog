@@ -42,7 +42,7 @@ router.get('/', withAuth, (req, res) => {
 
 })
 
-// route to edit a post
+// route to edit a post (/dashboard)
 router.get('/edit/:id', withAuth, (req, res) => {
     Posting.findOne({
         where: {
@@ -52,12 +52,12 @@ router.get('/edit/:id', withAuth, (req, res) => {
             'id',
             'post_title',
             'post_content',
-            'comment_timestamp',
+            'post_timestamp',
         ],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'posting_id', 'user_id', 'comment_timestamp'],
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'comment_timestamp'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -75,7 +75,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         }
 
         const posting = postingData.get({ plain:true })
-        res.render('edit_post', {posting, logged_in: true });
+        res.render('edit-post', {posting, logged_in: true });
     }).catch(err => {
     console.log(err);
     res.status(500).json(err);
