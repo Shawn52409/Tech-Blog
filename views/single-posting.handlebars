@@ -1,21 +1,17 @@
-{{> post posting}}
+{{> post-with-comments posting}}
 
 {{#if logged_in}}
-<form class="post">
+<form id="comment-form" class="post">
     
     <div class="comment-card-header p-2">
-        <textarea name="comment-body" placeholder="Add comment here..."></textarea>    
+        <textarea id="comment-text" placeholder="Add comment here..."></textarea>    
     </div>
 
     <div class="p-2">
-        <button class="bg-success" type="submit">Submit comment</button>
+        <button class="bg-success" id="comment-submit-btn" type="submit">Submit</button>
     </div>            
 
 </form>
-{{/if}}
 
-{{> comment posting.comment}}
-
-{{#if logged_in}}
 <script src='/js/comment.js'><</script>
 {{/if}}
