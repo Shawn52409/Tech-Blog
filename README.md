@@ -33,7 +33,7 @@ https://techblog-smm.herokuapp.com/
 ![Appearance of the homepage of the running app](./img/screenshot.jpg)
 
 # Bugs
-Currently the app is not running to all of it's routes correctly.  I under estimated how much time I needed to complete this rather lengthy project and I am currently coding and pushing more routes to the repo as I finish them and test them. I am hoping to have them completely before this is graded. I understand I will receive a lower grade if this is graded before I have them uploaded. However, I am trying to complete this 100% and will resubmit when complete and remove this text from my README.
+No known bugs
 
 # Contact-Info
 shawnsmm@gmail.com
