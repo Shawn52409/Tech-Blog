@@ -65,16 +65,14 @@ router.get('/post/:id', async (req, res) => {
             model: User,
             attributes: ['username']
           }
-
         }
       ],
     });
 
     const posting = postingData.get({ plain: true });
-    console.log(posting);
     res.render('single-posting', {
       posting,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
