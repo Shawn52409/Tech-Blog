@@ -34,3 +34,35 @@ input[type="password"] {
 .edit-post{
   background-color: rgb(241, 243, 243);
 }
+
+#comment-submit-btn{
+  border-radius: 10%;
+
+}
+
+.all-comments{
+  background-color: rgb(80, 135, 190);
+}
+
+.title-animate{
+
+  width: 600px;
+  height: 80px;
+  color: blue;
+  position: relative;
+  animation-name: test;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;  
+}
+
+@keyframes test {
+
+  0%   {color:red;}
+  20%  {color: orange;}
+  40%  {color:yellow;}
+  60%  {color:yellowgreen;}
+  80%  {color:green;}
+  100% {color:blue;}
+
+
+}
