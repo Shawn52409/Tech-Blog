@@ -1,7 +1,11 @@
 async function newFormHandler(evt) {
     evt.preventDefault();
 
-    const comment = document.querySelector('textarea').value;
+    const comment = document.querySelector('#comment-text').value;
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+      ];
+
 
     if (comment) {
     const response = await fetch('/api/comments', {
@@ -15,11 +19,11 @@ async function newFormHandler(evt) {
         }
         });
         if (response.ok) {
-            document.location.replace('/dashboard');        
+            document.location.replace('/');        
         } else {
             alert(response.statusText);
         }
     }
 }
 
-document.querySelector('.new-posting').addEventListener('submit', newFormHandler);
+document.querySelector('#comment-form').addEventListener('submit', newFormHandler);
